@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Dragon Ball Shooter</title>
+		<style>
+			div{
+				position: absolute;				  
+				background: transparent;
+				border: 1px solid black;
+				width: 600px;
+				height: 360px;
+				text-align: center;
+				background-image: url("img/backgrounds/back.jpg");
+			}
+			body{
+				width: 500px;
+				margin: auto; 	
+			}
+		</style>
+	</head>
+	<h1>Dragon Ball Shooter</h1>
+	<body>
+		<div>
+		  <h1>SCORE</h1>
+		  <table  align="center">
+			  <tr>
+				<td>Vegeto - </td>
+				<td>1000</td>
+			  </tr>
+			  <tr>
+				<td>Piccolo - </td>
+				<td>500</td>
+			  </tr>
+			  <tr>
+				<td>Kuririn - </td>
+				<td>250</td>
+			  </tr>
+			  <tr>
+				<td>Seu Score - </td>
+				<td id="score"></td>
+			  </tr>
+		</table>
+		  <p  style="align:center; position:absolute; bottom: 0; margin: 2cm 4cm 2.8cm 4cm;">Para jogar novamente aperte qualquer tecla</p>
+		</div>
+		<script>
+			//Recupera da memoria local o valor armazenado de score
+			//Método usado com base neste tutorial http://www.w3schools.com/html/tryit.asp?filename=tryhtml5_webstorage_local
+			document.getElementById("score").innerHTML = localStorage.getItem("score");
+			
+			document.addEventListener("keypress", function(){
+			window.open("DBShooter.html","_self" );
+			});
+			document.addEventListener("click", function(){
+			window.open("DBShooter.html","_self" );
+			});								
+		</script>
+		
+	</body>
+</html>

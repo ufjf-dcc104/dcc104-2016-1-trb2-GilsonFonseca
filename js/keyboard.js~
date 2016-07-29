@@ -1,0 +1,53 @@
+
+function teclaPressionada(e){
+			console.log("Tecla Pressionada: " + e.keyCode);
+			var audioLib = new AudioResources(12);
+			var kiPressionado = 25;
+			switch(e.keyCode){
+				case 90:
+					//Se o herói não está danificado nem fraco pode atirar
+							
+					if(pc.danificado == 0 && resfriamento == 0){
+						disparaTiro((pc.x+pc.raio), pc.y);
+						audioLib.load("beam", "sound/eyebeam_fire.ogg");
+						audioLib.play("beam");
+					}
+					break;
+					
+				case 82:
+					    audioLib.load("ki", "sound/auraloop.ogg");
+					kiPressionado = kiPressionado--;
+					if(kiPressionado == 0)		    
+					      audioLib.play("ki", 4000);
+					      //audioLib.play("jump", 1000);
+					   
+							
+				case 37:
+					pc.ax = -300;					
+				break;
+				case 39:
+					pc.ax = 300;
+				break;
+				case 38:
+					pc.ay = -300;
+				break;
+				case 40:
+					pc.ay = 300;
+				break;
+			}
+
+		}
+
+		function teclaSolta(e){
+			console.log("Tecla Solta: " + e.keyCode);
+			switch(e.keyCode){
+				case 37:
+				case 39:
+					pc.ax = 0;
+					break;
+				case 38:
+				case 40:
+					pc.ay = 0;
+				break;
+			}
+		}
