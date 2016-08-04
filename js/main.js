@@ -119,7 +119,7 @@
 			excluir = [];
 			excluirTiros = [];
 			excluirTirosInimigos = [];
-	//	gimmeBlood();
+		gimmeBlood();
 	}
 	
 	setInterval(passo, 1000/fps);

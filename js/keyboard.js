@@ -29,15 +29,15 @@ function teclaPressionada(e){
 	
 	if(keys[82]){
 		audioLib.load("ki", "sound/auraloop.ogg");
-		pc.releasing = 100;
-		if(pc.danificado == 0){
+		pc.releasing = 10;
+		
 			if(iskiPlaying == 0){   
 				audioLib.play("ki", 4000);
 				iskiPlaying = 1;
 				if(resfriamentoKame !=0)
 					resfriamentoKame = resfriamentoKame -10;
 			}
-		}
+		
 	}
 	
 	if(keys[65]){
@@ -93,6 +93,7 @@ function teclaSolta(e){
 				audioLib.play("ha_fire");
 				
 		}
+		pc.firing = 0;
 		e.preventDefault();
 	}
 	

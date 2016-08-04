@@ -19,14 +19,11 @@
 		Sprite.prototype.mover = function (){
  			this.vx = this.vx + this.ax*dt;
  			this.x = this.x + this.vx*dt;
- 			this.vy = this.vy + this.ay*dt;
- 			this.y = this.y + this.vy*dt;
+ 			//this.vy = this.vy + this.ay*dt;
+ 			//this.y = this.y + this.vy*dt;
  		}
 		
-		function land() {					
-			this.p = false;
-		}
-		
+
  		Sprite.prototype.desenhar = function (){}
 		
 		Sprite.prototype.restricoes = function(){

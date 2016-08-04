@@ -54,9 +54,9 @@
 			this.danificado -= 1;
 		}
 		else{
-			if(this.releasing > 0){
+			if(pc.releasing > 0){
 				imgLib.drawX(ctx,"hero", 320, 836, 45, 45);		
-			this.releasing -= 10;
+			pc.releasing -= 1;
 			}else{
 				if(this.firing == 3){
 					imgLib.drawX(ctx,"hero", 105, 1000, 47, 47);
