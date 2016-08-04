@@ -3,12 +3,11 @@
 		var tiros = [];		
 		var excluirTiros = [];
 		audioLib = new AudioResources(12);
-		//this.pode = true;
+		var elimina = false;
 		
 		function disparaTiro(x, y){
 			var tiro = new Sprite();
-			
-			
+			tiro.elimina = true;			
 			audioLib.load("beam", "sound/birl.mp3");
 			audioLib.play("beam");
 			resfriamento = 30;

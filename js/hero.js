@@ -11,6 +11,7 @@
 	pc.danificado = 0;
 	pc.firing = 0;
 	pc.punching = 0;
+	pc.isPunching = false;
 	pc.chao = 0;
 	pc.releasing = 0;
 	
@@ -28,13 +29,18 @@
 		}					
 	}
 	
-	function combo()
-	{
-		if(this.punching == 0)
-			this.punching = 1;
-		while(this.punching < 7)
-			this.punching++;
-		this.punching = 0;
+	pc.combo = function(){
+		if(pc.isPunching == true){
+			if(pc.punching < 11)
+				pc.punching++;
+				console.log(pc.punching);
+				console.log(pc.isPunching);
+		}
+		if(pc.punching == 11){
+			pc.punching = 0;
+			pc.isPunching = false;
+		}
+		
 	}
 		
 	//Função de desenho do herói
@@ -45,8 +51,8 @@
 		if(resfriamentoKame !=0)
 			resfriamentoKame = resfriamentoKame -1;
 	
-		ctx.strokeStyle = "red";
-		ctx.strokeRect(pc.xi*TS, pc.yi*TS, TS, TS);
+		//ctx.strokeStyle = "red";
+		//ctx.strokeRect(pc.xi*TS, pc.yi*TS, TS, TS);
 		
 		// Se o heroi for danificado mostrara um sprite de dano
 		if(this.danificado > 0){
@@ -58,7 +64,45 @@
 				imgLib.drawX(ctx,"hero", 320, 836, 45, 45);		
 			pc.releasing -= 1;
 			}else{
-				if(this.firing == 3){
+				if(pc.isPunching)
+				{
+					if(pc.punching == 1)
+						imgLib.drawX(ctx,"hero", 0, 893, 42, 43);
+					else
+						if(pc.punching == 2)
+							imgLib.drawX(ctx,"hero", 40, 893, 42, 43);
+						else
+							if(pc.punching == 3)
+								imgLib.drawX(ctx,"hero", 80, 894, 42, 43);
+							else
+								if(pc.punching == 4)
+									imgLib.drawX(ctx,"hero", 117, 893, 42, 43);
+								else
+									if(pc.punching == 5)
+										imgLib.drawX(ctx,"hero", 160, 893, 42, 43);
+									else
+										if(pc.punching == 6)
+											imgLib.drawX(ctx,"hero", 200, 893, 42, 43);
+										else
+											if(pc.punching == 7)
+												imgLib.drawX(ctx,"hero", 243, 893, 42, 43);
+											else
+												if(pc.punching == 8)
+													imgLib.drawX(ctx,"hero", 293, 893, 42, 43);
+												else
+													if(pc.punching == 9)
+														imgLib.drawX(ctx,"hero", 338, 893, 42, 43);
+													else
+														if(pc.punching == 10)
+															imgLib.drawX(ctx,"hero", 384, 893, 42, 43);
+														/*else{
+															pc.punching = 0;
+															pc.isPunching = false;
+														}*/
+															
+				}
+				else{
+					if(this.firing == 3){
 					imgLib.drawX(ctx,"hero", 105, 1000, 47, 47);
 					dontPlay = 0;
 				}else{			
@@ -76,11 +120,13 @@
 									imgLib.drawX(ctx,"hero", 72, 840, 47, 47);
 								}else{
 									imgLib.drawX(ctx,"hero",114, 835, 43,47);
+									}
 								}
 							}
-						}
-					}	
+						}	
+					}
 				}
+				
 			}
 		}
 		

@@ -27,9 +27,19 @@ function teclaPressionada(e){
 		}
 	}
 	
+	if(keys[75] ){
+		pc.isPunching = true;
+		pc.combo();
+		
+	}
+	
 	if(keys[82]){
 		audioLib.load("ki", "sound/auraloop.ogg");
 		pc.releasing = 10;
+		pc.vx = 0;
+		pc.ax = 0;
+		pc.vy = 0;
+		pc.ay = 0;
 		
 			if(iskiPlaying == 0){   
 				audioLib.play("ki", 4000);
@@ -77,6 +87,10 @@ function teclaSolta(e){
 		pc.ax = 0;
 		e.preventDefault();
 		
+	}
+	
+	if(keys[75] ){
+		//pc.isPunching = false;
 	}
 	
 	if(keys[68]){

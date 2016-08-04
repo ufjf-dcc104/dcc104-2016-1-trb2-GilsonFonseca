@@ -70,16 +70,28 @@
 		 //Tratamento das Colisões
 			for (var i in inimigos) {
 				if(pc.danificado<=0 && pc.colidiuComCircular(inimigos[i])){
-					pc.danificado = cooldown;
-					barraVida.descresce();
-					if(inimigos[i].x>pc.x){
-						pc.vx -=800;
-						pc.vy = -200;
-					}
+					if(pc.isPunching == false){
+						pc.danificado = cooldown;
+						barraVida.descresce();
+						if(inimigos[i].x>pc.x){
+							pc.vx -=800;
+							pc.vy = -200;
+						}
 						else{
 							pc.vx +=200;
 							pc.vy = -200;	
 						}
+					}else{
+						
+						inimigos[i].vx=0;
+						inimigos[i].ax=0;
+						inimigos[i].vy=0;
+						inimigos[i].ay=0;
+						if(pc.punching == 10){
+							excluir.push(inimigos[i]);	
+							pc.score = pc.score+10;
+						}						
+					}
 					
 					//inimigos[i].danificado = cooldown;
 					
@@ -89,9 +101,18 @@
 				if(tiros[j].colidiuComCircular(inimigos[i])){
 					pc.score = pc.score+10;
 					excluir.push(inimigos[i]);
-					excluirTiros.push(tiros[j]);
-					tiros[j].x = -1200;
-					tiros[j].vx = 0;
+					console.log(tiros[j].elimina);
+					if(tiros[j].elimina == true){
+						excluirTiros.push(tiros[j]);
+						tiros[j].x = -1200;
+						tiros[j].vx = 0;
+					}
+					else
+						if(tiros[j].x > tela.width+20){
+							excluirTiros.push(tiros[j]);
+							tiros[j].x = -1200;
+							tiros[j].vx = 0;
+						}
 				}
 			}
 			for(var j in tirosInimigos){
