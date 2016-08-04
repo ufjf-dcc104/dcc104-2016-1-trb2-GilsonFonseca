@@ -46,16 +46,20 @@
 				this.ay = 0;
 			}
 			if(this.y>tela.height-0-this.raio/2) {
-				this.y=tela.height+50+this.raio/2;
+				this.y=200+this.raio/2;
+				barraVida.descresce();
 				this.vy = 0;
+				this.vx = 0;
+				this.ax = 0;
 				this.ay = 0;
+				this.xi = Math.floor(pc.x/TS);
 			}
 		}
-		/*
+		
 		Sprite.prototype.colidiuComCircular = function (alvo) {
 			var distancia = Math.sqrt(
 						Math.pow(alvo.x - this.x, 2)+
 						Math.pow(alvo.y - this.y, 2)
 			);
 			return distancia<(alvo.raio);
-		};*/
+		};

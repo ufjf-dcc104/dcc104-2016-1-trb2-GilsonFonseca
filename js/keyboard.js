@@ -12,12 +12,15 @@ function teclaPressionada(e){
 		e.preventDefault();
 	}
 
-	// Shift + Z
-	if (keys[16] && keys[90]) {
+	// Shift + P
+	if (keys[16] && keys[80]) {
+		if(pc.danificado == 0 && resfriamentoKame == 0)
+			pc.firing = 3;
+		
 		e.preventDefault();
 	}
 	
-	if(keys[80]){
+	if(keys[32] ){
 		if(pc.danificado == 0 && resfriamento == 0){
 			switchHands();
 			disparaTiro((pc.x+pc.raio), pc.y);
@@ -26,10 +29,15 @@ function teclaPressionada(e){
 	
 	if(keys[82]){
 		audioLib.load("ki", "sound/auraloop.ogg");
+		pc.releasing = 100;
+		if(pc.danificado == 0){
 			if(iskiPlaying == 0){   
 				audioLib.play("ki", 4000);
 				iskiPlaying = 1;
+				if(resfriamentoKame !=0)
+					resfriamentoKame = resfriamentoKame -10;
 			}
+		}
 	}
 	
 	if(keys[65]){
@@ -43,8 +51,11 @@ function teclaPressionada(e){
 	}
 	
 	if(keys[87]){
-		pc.vy = -220;
-		pc.p = true;
+		console.log(pc.jumping);
+		if(pc.jumping == false){
+			
+		pc.pula();
+		}
 		e.preventDefault();
 	}
 	
@@ -58,7 +69,7 @@ function teclaPressionada(e){
 
 function teclaSolta(e){
 	//console.log("Tecla Solta: " + e.keyCode);
-	if(keys[80]){
+	if(keys[32]){
 		pc.firing = 0;
 	}
 	
@@ -72,6 +83,17 @@ function teclaSolta(e){
 		pc.ax = 0;
 		e.preventDefault();
 
+	}
+	
+	if (keys[16] && keys[80]) {
+		if(pc.danificado == 0 && resfriamentoKame == 0){
+			disparaKameHameHa((pc.x+pc.raio), pc.y)
+				dontPlay = 1;
+				audioLib.load("ha_fire", "sound/kamehameha_fire.ogg");			
+				audioLib.play("ha_fire");
+				
+		}
+		e.preventDefault();
 	}
 	
 	if(keys[87]){

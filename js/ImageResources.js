@@ -18,11 +18,11 @@ function ImageResources(){
   this.isReady = function(){
     return (this.resourcesCount === this.resourcesLoaded);
   }
-  this.drawSheet = function(ctx, key, a, b, c, d, x, y, w, h){
-    ctx.drawImage(this.images[key],a, b, c, d, x, y, w, h);
-  }
   this.draw = function(ctx, key, x, y, w, h){
-    ctx.drawImage(this.images[key], x, y, w, h);
+	  ctx.drawImage(this.images[key], x, y, w, h);
+  }
+  this.drawX = function(ctx, key, x, y, w, h){
+	  ctx.drawImage(this.images[key], x, y, w, h, (pc.x-pc.w/2), (pc.y-pc.h/2), (pc.w), (pc.h));
   }
   this.drawCentered = function(ctx, key, x, y, w, h){
     ctx.save();

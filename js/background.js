@@ -1,11 +1,6 @@
 		/*Responsável pela criação do fundo do jogo*/		
 		// Inicialização das Variavéis que receberão as imagens de fundo
-		imgLib = new ImageResources();
-		imgLib.addImage("frente", "img/backgrounds/block2.png");
-		imgLib.addImage("fundo", "img/backgrounds/backcamp.png");
-		imgLib.addImage("montanha", "img/backgrounds/backrocks.png");
-		imgLib.addImage("bloco", "img/backgrounds/block.png");
-		imgLib.addImage("bloco2", "img/backgrounds/block2.png");
+		
 		var TS = 40;
 		var TX = 40;
 		var TY = 80;
@@ -28,13 +23,13 @@
 			return arr;
 		}
 		
-		var mapa = Array.matrix(50,50,0)
+		var mapa = Array.matrix(40,40,0)
 		function trocaMapa(){
 			if(cooldownTempo == 0){
-				for(var i=10; i<mx; i++){
+				for(var i=6; i<14; i+=2){
 					for (var j=7; j<my; j++){
-						mapa[14][j] = Math.floor((Math.random() * 2) + 0);
-						minimizado(j);
+						mapa[i][j] = Math.floor((Math.random() * 2) + 0);
+						minimizado(i,j);
 						//mapa[14][j] = 1;
 						
 					}
@@ -44,59 +39,37 @@
 		}
 		for(var i=0; i<7; i++){
 			mapa[14][i] = 1;
+			mapa[6][i] = 1;
+			mapa[6][7+i] = 1;
 		}
 		
-		function minimizado(j){
-			if(mapa[14][j-1] == 0 && mapa[14][j+1] == 0 && mapa[14][j] == 0)
+		function minimizado(i,j){
+			if(mapa[i][j-1] == 0 && mapa[i][j+1] == 0 && mapa[i][j] == 0){
+				mapa[i][j] = 1;				
+				mapa[i][j+1] = 1;
+			}
+			mapa[14][j+1] = 1;
 				mapa[14][j] = 1;
-			
 				
 		}
 		
 		function desenhaMapa(){
-			
 			imgLib.draw(ctx,"fundo",(parafundo+tela.width/2)-145, 0, tela.width/2+145, tela.height);
 			imgLib.draw(ctx,"fundo",parafundo, 0, tela.width/2, tela.height);
-			
-			
-			//imgLib.draw(ctx,"montanha",parafrente+300,tela.height-200, 100, 170);
-			//imgLib.drawRotated(ctx,"frente",parafrente+290,tela.height-200, 100, 100, -11);
-
-				for (var j=0; j<my; j++){
-					if(mapa[14][j]==1){
-						//imgLib.draw(ctx,"bloco2",TS*j,  TS*14, TX, TY/5);
-						imgLib.draw(ctx,"frente", TS*j,  TS*13, TX, TY);
-
-					}
+			for (var j=0; j<my; j++){
+				if(mapa[14][j]==1){
+					imgLib.draw(ctx,"frente", TS*j,  TS*13, TX, TY);
 				}
-			
+			}			
 			
 			for(var i=0; i<14; i++){
 				for (var j=0; j<my; j++){
 					if(mapa[i][j]==1){
-						//imgLib.draw(ctx,"bloco2",TS*j,  TS*(i+1), TX, TY/5);
 						imgLib.draw(ctx,"frente",parafrente*j, TS*i, TX, -80/5);
 
 					}
 				}
-			}
-			
-			//imgLib.draw(ctx,"frente",parafrente,tela.height+80, 80, -170);
-			//imgLib.draw(ctx,"frente",parafrente+80,tela.height+80, 80, -170);
-			//imgLib.draw(ctx,"frente",parafrente+160,tela.height+80, 80, -170);
-			//imgLib.draw(ctx,"frente",parafrente+240,tela.height+80, 80, -170);
-			//imgLib.draw(ctx,"frente",parafrente+320,tela.height+80, 80, -170);
-			//imgLib.draw(ctx,"frente",parafrente+500,tela.height+80, 80, -170);
-			//imgLib.draw(ctx,"frente",parafrente+400,tela.height+80, 80, -170);
-			//imgLib.draw(ctx,"frente",parafrente+480,tela.height+80, 80, -170);
-			
-			//imgLib.draw(ctx,"frente",tela.width-80,tela.height+80, 80, -170);
-			
-			
-			//imgLib.draw(ctx,"frente",parafrente,tela.height+80, 80, -170);
-			//ctx.fillStyle = "black";
-			//ctx.fillRect(0,0, tela.width, tela.height);	
-					
+			}				
 		}
 	
 	
