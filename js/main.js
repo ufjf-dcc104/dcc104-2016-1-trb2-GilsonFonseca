@@ -8,20 +8,27 @@
 	var dt = 1/fps;
 	var G = 200;
 	var dontPlay = 1;
+	var contaInimigos = 10;
+	var novoMapa = 0;
 	//carregando todas as imagens
 	var imgLib = new ImageResources();
 	imgLib.addImage("frente", "img/backgrounds/block2.png");
 	imgLib.addImage("fundo", "img/backgrounds/backcamp.png");
-	imgLib.addImage("montanha", "img/backgrounds/backrocks.png");
+	imgLib.addImage("montanha", "img/backgrounds/backrocks2.png");
 	imgLib.addImage("bloco", "img/backgrounds/block.png");
 	imgLib.addImage("bloco2", "img/backgrounds/block2.png");
 	imgLib.addImage("hero","img/goku.png");
+	imgLib.addImage("heroInvert","img/gokuInvert.png");
+	
 		
 	// Função responsável pela geração de inimigos
 	function gimmeBlood(){
-		if(inimigos.length < 2)
-			while(inimigos.length < 2 ){
-				criaInimigo(439, 40);
+		if(inimigos.length < 1)
+			var j=0;
+			while(j < i ){
+				//criaInimigo(439, 100+20*(j));
+				criaInimigo(439+j*60, 100);
+				j++;
 			}			
 	};
 
@@ -30,13 +37,16 @@
 		//Limpar a tela
 			ctx.clearRect(0,0, tela.width, tela.height);
 			
-		audioLib = new AudioResources(1);
-		audioLib.load("soundt", "sound/DBAA001.ogg");
-		if(isPlaying == 0)
-			audioLib.play("soundt");
+		//audioLib = new AudioResources(1);
+		//audioLib.load("soundt", "sound/DBAA001.ogg");
+		//if(isPlaying == 0)
+			//audioLib.play("soundt");
 		
-		trocaMapa();
-		cooldownTempo --;
+		if(novoMapa == 0)
+			trocaMapa();
+		else
+			novoMapa--;
+		//cooldownTempo --;
 		desenhaMapa();
 		barraVida.desenhar();		
 		

@@ -44,7 +44,7 @@ function teclaPressionada(e){
 			if(iskiPlaying == 0){   
 				audioLib.play("ki", 4000);
 				iskiPlaying = 1;
-				if(resfriamentoKame !=0)
+				if(resfriamentoKame > 0)
 					resfriamentoKame = resfriamentoKame -10;
 			}
 		
@@ -85,6 +85,7 @@ function teclaSolta(e){
 	
 	if(keys[65]){
 		pc.ax = 0;
+		pc.vx = 0;
 		e.preventDefault();
 		
 	}
@@ -95,6 +96,7 @@ function teclaSolta(e){
 	
 	if(keys[68]){
 		pc.ax = 0;
+		pc.vx = 0;
 		e.preventDefault();
 
 	}

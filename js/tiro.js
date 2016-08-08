@@ -1,5 +1,7 @@
 		var ball = new Image();
-		ball.src = "img/goku.png";	
+		ball.src = "img/goku.png";
+		var ballInverted = new Image();
+		ballInverted.src = "img/gokuInvert.png";		
 		var tiros = [];		
 		var excluirTiros = [];
 		audioLib = new AudioResources(12);
@@ -13,11 +15,22 @@
 			resfriamento = 30;
 			tiro.x = x;				
 			tiro.y = y;
-			tiro.vx = 400.1;
 			tiro.restricoes = function () {};
-			tiro.desenhar = function() {
-			ctx.drawImage(ball,  82, 1005, 40, 40, 12+(this.x-this.raio), this.y-this.raio, 2*this.raio, 2*this.raio);
+			if(pc.orientation == 0)
+			{	
+				tiro.vx = 400.1;
+				tiro.desenhar = function() {
+					ctx.drawImage(ball,  82, 1005, 40, 40, 12+(this.x-this.raio), this.y-this.raio, 2*this.raio, 2*this.raio);
+				}
 			}
+			else{
+				tiro.x = tiro.x - pc.raio*2;
+				tiro.vx = -400.1;
+				tiro.desenhar = function() {
+					ctx.drawImage(ballInverted,   1078, 1005, 40, 40, 12+(this.x-this.raio), this.y-this.raio, 2*this.raio, 2*this.raio);
+				}
+			}
+			
 			tiros.push(tiro);
 		}
 		
@@ -26,10 +39,20 @@
 			resfriamentoKame = 300;
 			tiro.x = x;				
 			tiro.y = y;
-			tiro.vx = 400.1;
 			tiro.restricoes = function () {};
-			tiro.desenhar = function() {
-			ctx.drawImage(ball,  254, 1005, 45, 45, 12+(this.x-this.raio), this.y-this.raio, 2*this.raio, 2*this.raio);
+			if(pc.orientation == 0)
+			{	
+				tiro.vx = 400.1;
+				tiro.desenhar = function() {
+					ctx.drawImage(ball,  254, 1005, 45, 45, 12+(this.x-this.raio), this.y-this.raio, 2*this.raio, 2*this.raio);
+				}
+			}
+			else{
+				tiro.x = tiro.x - pc.raio*2;
+				tiro.vx = -400.1;
+				tiro.desenhar = function() {
+					ctx.drawImage(ballInverted,   902, 1005, 45, 45, 12+(this.x-this.raio), this.y-this.raio, 2*this.raio, 2*this.raio);
+				}
 			}
 			tiros.push(tiro);
 		}

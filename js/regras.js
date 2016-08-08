@@ -24,8 +24,10 @@ barraVida.descresce = function (){
 barraVida.desenhar = function (){
 	ctx.beginPath();
 	ctx.fill();
-	ctx.rect(x, y-10, resfriamentoKame, 10);
+	ctx.fillStyle = "#8B658B";
+	ctx.rect(x, y-30, resfriamentoKame, 80);
 	ctx.fill();
+	ctx.beginPath();
 	// fundo da barra da vida cinza
 	ctx.fillStyle = "lightgrey";
 	ctx.rect(x, y, width, height);

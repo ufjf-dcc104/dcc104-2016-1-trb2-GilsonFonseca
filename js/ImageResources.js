@@ -26,13 +26,13 @@ function ImageResources(){
   }
   this.drawCentered = function(ctx, key, x, y, w, h){
     ctx.save();
-    ctx.translate(x, y);
+    ctx.translate(tela.width/2, tela.height/2);
     ctx.drawImage(this.images[key], -w/2, -h/2);
     ctx.restore();
   }
   this.drawRotated = function(ctx, key, x, y, w, h, angle){
     ctx.save();
-    ctx.translate(x, y);
+    ctx.translate(tela.width/2, tela.height/2);
     ctx.rotate(angle*Math.PI/180);
     ctx.drawImage(this.images[key], -w/2, -h/2);
     ctx.restore();
